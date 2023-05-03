@@ -19,6 +19,7 @@ window.addEventListener("load", function () {
 
 
 
+
 // UI
 function appendUI () {
   const descriptors = {
@@ -91,3 +92,110 @@ function handleResponse (message) {
 
     responsesListElement.prepend(pElement);
 }
+
+
+/**************************************************************** */
+
+const allButtons = document.getElementsByClassName("item");
+const buttonArray = Array.from(allButtons);
+const infoBar = document.getElementById("info_bar")
+const mainPage = document.getElementById("body") 
+
+console.log(mainPage);
+        
+let btn1 = e =>{
+  buttonArray.forEach(button => {
+    button.classList.remove("clicked");
+});
+
+console.log("btn1 pressed");
+e.currentTarget.classList.add("clicked")
+infoBar.textContent = "Button 1 is active";
+}
+
+
+let btn2 = e =>{
+  buttonArray.forEach(button => {
+    button.classList.remove("clicked");
+});
+
+console.log("btn2 pressed");
+e.currentTarget.classList.add("clicked")
+infoBar.textContent = "Button 2 is active";
+}
+
+
+let btn3 = e =>{
+  buttonArray.forEach(button => {
+    button.classList.remove("clicked");
+});
+
+console.log("btn3 pressed");
+e.currentTarget.classList.add("clicked")
+infoBar.textContent = "Button 3 is active";
+}
+
+
+let btn4 = e =>{
+  buttonArray.forEach(button => {
+    button.classList.remove("clicked");
+});
+
+console.log("btn4 pressed");
+e.currentTarget.classList.add("clicked")
+infoBar.textContent = "Button 4 is active";
+}
+
+
+let btn5 = e =>{
+  buttonArray.forEach(button => {
+    button.classList.remove("clicked");
+});
+
+console.log("btn5 pressed");
+e.currentTarget.classList.add("clicked")
+infoBar.textContent = "Button 5 is active";
+}
+
+
+let btn6 = e =>{
+    // Remove the "clicked" class from all buttons
+    buttonArray.forEach(button => {
+      button.classList.remove("clicked");
+    });
+  
+    // Add the "clicked" class to the clicked button
+    e.currentTarget.classList.add("clicked");
+  
+    // Update the info bar text
+    infoBar.textContent = "Button 6 is active";
+  
+    // Check if fullscreen mode is enabled
+    if (!document.fullscreenElement) {
+      // If fullscreen mode is not enabled, request it on the main canvas element
+      mainPage.requestFullscreen();
+    }
+    else
+    {
+        document.exitFullscreen(); 
+    }
+  }
+
+
+
+/*   export function btnFns ({
+    btn1,
+    btn2,
+    btn3,
+    btn4,
+    btn5,
+    btn6
+  }) */
+
+
+  document.querySelector('#button1').addEventListener('click', btn1)
+  document.querySelector('#button2').addEventListener('click', btn2)
+  document.querySelector('#button3').addEventListener('click', btn3)
+  document.querySelector('#button4').addEventListener('click', btn4)
+  document.querySelector('#button5').addEventListener('click', btn5)
+  document.querySelector('#button6').addEventListener('click', btn6)
