@@ -1,0 +1,35 @@
+.select-block {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    z-index: 10;
+    width: 70px;
+    height: 25px;
+    font-size: 16px;
+  }
+
+  .responses-block {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    z-index: 10;
+    color: white;
+    font-size: 18px;
+    font-family: Arial;
+  }
+
+  #responses-list {
+    overflow: hidden;
+    max-height: 400px;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  #responses-list p {
+    margin: 0;
+  }
+
+  .buttonC{
+    width: 40px;
+    height: 40px;
+  }
