@@ -96,21 +96,48 @@ function handleResponse (message) {
 
 /**************************************************************** */
 
+
 const allButtons = document.getElementsByClassName("item");
 const buttonArray = Array.from(allButtons);
 const infoBar = document.getElementById("info_bar")
 const mainPage = document.getElementById("body") 
 
-console.log(mainPage);
+const descriptors = {
+  color: {
+    'black': {
+      Change_Attribute_Event: true,
+      Attribute_Key: "Color",
+      Attribute_Value: "Black",
+    },
+    'white': {
+      Change_Attribute_Event: true,
+      Attribute_Key: "Color",
+      Attribute_Value: "White",
+    },
+    'yellow': {
+      Change_Attribute_Event: true,
+      Attribute_Key: "Color",
+      Attribute_Value: "Metro_Exodus",
+    },
+    'Metal': {
+      Change_Attribute_Event: true,
+      Attribute_Key: "Color",
+      Attribute_Value: "Metro_Exodus",
+    }
+  }}
+
         
 let btn1 = e =>{
+
+  ///all buttons off
   buttonArray.forEach(button => {
     button.classList.remove("clicked");
 });
-
+/// Other functionality
 console.log("btn1 pressed");
 e.currentTarget.classList.add("clicked")
-infoBar.textContent = "Button 1 is active";
+infoBar.textContent = "Black";
+emitUIInteraction(descriptors.color.black)
 }
 
 
@@ -121,18 +148,20 @@ let btn2 = e =>{
 
 console.log("btn2 pressed");
 e.currentTarget.classList.add("clicked")
-infoBar.textContent = "Button 2 is active";
+infoBar.textContent = "White";
+emitUIInteraction(descriptors.color.white)
 }
 
 
 let btn3 = e =>{
   buttonArray.forEach(button => {
     button.classList.remove("clicked");
+    emitUIInteraction(descriptors.color.yellow)
 });
 
 console.log("btn3 pressed");
 e.currentTarget.classList.add("clicked")
-infoBar.textContent = "Button 3 is active";
+infoBar.textContent = "Yellow";
 }
 
 
@@ -143,7 +172,8 @@ let btn4 = e =>{
 
 console.log("btn4 pressed");
 e.currentTarget.classList.add("clicked")
-infoBar.textContent = "Button 4 is active";
+infoBar.textContent = "Metal";
+emitUIInteraction(descriptors.color.Metal)
 }
 
 
@@ -168,7 +198,7 @@ let btn6 = e =>{
     e.currentTarget.classList.add("clicked");
   
     // Update the info bar text
-    infoBar.textContent = "Button 6 is active";
+    infoBar.textContent = "Fullscreen toggle";
   
     // Check if fullscreen mode is enabled
     if (!document.fullscreenElement) {
