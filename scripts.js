@@ -55,13 +55,13 @@ function appendUI () {
 
   const optionsFragment = document.createDocumentFragment();
   const optionsList = [];
-  Object.keys(descriptors.color).forEach(v => {
+/*   Object.keys(descriptors.color).forEach(v => {
     const option = document.createElement('option');
     option.innerText = v;
     optionsList.push(option);
-  })
-  optionsFragment.append(...optionsList);
-  selectElement.append(optionsFragment);
+  }) */
+/*   optionsFragment.append(...optionsList);
+  selectElement.append(optionsFragment); */
 
   selectElement.addEventListener("change", event => {
     emitUIInteraction(descriptors.color[event.target.value]);
@@ -70,18 +70,18 @@ function appendUI () {
   container.append(selectElement);
 
   // Responses
-  const responsesElement = document.createElement('div');
-  responsesElement.classList.add('responses-block');
+/*   const responsesElement = document.createElement('div');
+  responsesElement.classList.add('responses-block'); */
   
-  const responsesElementHeader = document.createElement('h4');
-  responsesElementHeader.innerText = "Responses:";
+/*   const responsesElementHeader = document.createElement('h4');
+  responsesElementHeader.innerText = "Responses:"; */
 
-  const responsesElementList = document.createElement('div');
-  responsesElementList.setAttribute('id', 'responses-list');
+/*   const responsesElementList = document.createElement('div');
+  responsesElementList.setAttribute('id', 'responses-list'); */
 
-  responsesElement.append(responsesElementHeader);
+/*   responsesElement.append(responsesElementHeader);
   responsesElement.append(responsesElementList);
-  container.append(responsesElement);
+  container.append(responsesElement); */
 }
 
 
@@ -104,17 +104,17 @@ const mainPage = document.getElementById("body")
 
 const descriptors = {
   color: {
-    'black': {
+    'Black': {
       Change_Attribute_Event: true,
       Attribute_Key: "Color",
       Attribute_Value: "Black",
     },
-    'white': {
+    'White': {
       Change_Attribute_Event: true,
       Attribute_Key: "Color",
       Attribute_Value: "White",
     },
-    'yellow': {
+    'Yellow': {
       Change_Attribute_Event: true,
       Attribute_Key: "Color",
       Attribute_Value: "Metro_Exodus",
@@ -126,106 +126,29 @@ const descriptors = {
     }
   }}
 
-        
-let btn1 = e =>{
 
-  ///all buttons off
-  buttonArray.forEach(button => {
-    button.classList.remove("clicked");
-});
-/// Other functionality
-console.log("btn1 pressed");
-e.currentTarget.classList.add("clicked")
-infoBar.textContent = "Black";
-emitUIInteraction(descriptors.color.black)
-}
-
-
-let btn2 = e =>{
-  buttonArray.forEach(button => {
-    button.classList.remove("clicked");
-});
-
-console.log("btn2 pressed");
-e.currentTarget.classList.add("clicked")
-infoBar.textContent = "White";
-emitUIInteraction(descriptors.color.white)
-}
-
-
-let btn3 = e =>{
-  buttonArray.forEach(button => {
-    button.classList.remove("clicked");
-    emitUIInteraction(descriptors.color.yellow)
-});
-
-console.log("btn3 pressed");
-e.currentTarget.classList.add("clicked")
-infoBar.textContent = "Yellow";
-}
-
-
-let btn4 = e =>{
-  buttonArray.forEach(button => {
-    button.classList.remove("clicked");
-});
-
-console.log("btn4 pressed");
-e.currentTarget.classList.add("clicked")
-infoBar.textContent = "Metal";
-emitUIInteraction(descriptors.color.Metal)
-}
-
-
-let btn5 = e =>{
-  buttonArray.forEach(button => {
-    button.classList.remove("clicked");
-});
-
-console.log("btn5 pressed");
-e.currentTarget.classList.add("clicked")
-infoBar.textContent = "Button 5 is active";
-}
-
-
-let btn6 = e =>{
-    // Remove the "clicked" class from all buttons
-    buttonArray.forEach(button => {
-      button.classList.remove("clicked");
-    });
-  
-    // Add the "clicked" class to the clicked button
-    e.currentTarget.classList.add("clicked");
-  
-    // Update the info bar text
-    infoBar.textContent = "Fullscreen toggle";
-  
-    // Check if fullscreen mode is enabled
-    if (!document.fullscreenElement) {
-      // If fullscreen mode is not enabled, request it on the main canvas element
-      mainPage.requestFullscreen();
-    }
-    else
-    {
-        document.exitFullscreen(); 
-    }
-  }
-
-
-
-/*   export function btnFns ({
+/*   export {
     btn1,
     btn2,
-    btn3,
-    btn4,
-    btn5,
-    btn6
-  }) */
+    btn3
+  } */
 
+  
+let itemBtns = document.querySelectorAll('.item')
 
-  document.querySelector('#button1').addEventListener('click', btn1)
-  document.querySelector('#button2').addEventListener('click', btn2)
-  document.querySelector('#button3').addEventListener('click', btn3)
-  document.querySelector('#button4').addEventListener('click', btn4)
-  document.querySelector('#button5').addEventListener('click', btn5)
-  document.querySelector('#button6').addEventListener('click', btn6)
+let descriptorNames = ["Black", "White", "Yellow"]
+
+itemBtns.forEach((btn, i) => {
+  btn.addEventListener('click', (e)=>{handleClick(e, descriptorNames[i])})
+})
+
+    
+const handleClick = (e, descriptorName) => {
+    itemBtns.forEach(btn => {
+      btn.classList.remove('clicked')
+    })
+    e.currentTarget.classList.add('clicked')
+
+    infoBar.textContent = descriptorName;
+    emitUIInteraction(descriptors.color[descriptorName])
+}
